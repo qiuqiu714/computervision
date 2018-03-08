@@ -13,6 +13,7 @@ class Cameo(object):
         while self._windowManager.isWindowCreated:
             self._captureManager.enterFrame()
             frame = self._captureManager.frame
+            print(frame)
             self._captureManager.exitFrame()
             self._windowManager.processEvents()
 
@@ -22,14 +23,14 @@ class Cameo(object):
            tab    ->  start/stop recording a screencast
            escape ->  Quit
         """
-        if keycode == 32: # space
+        if keycode == 32:  # space
             self._captureManager.writeImage('screenshot.png')
-        elif keycode == 9: # tab
+        elif keycode == 9:  # tab
             if not self._captureManager.isWritingVideo:
                 self._captureManager.startWritingVideo('screencast.avi')
             else:
                 self._captureManager.stopWritingVideo()
-        elif keycode == 27: # escape
+        elif keycode == 27:  # escape
             self._windowManager.destoryWindow()
 
 
